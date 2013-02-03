@@ -1,0 +1,21 @@
+extends layout
+
+
+block content
+  h1= title
+
+  p.ingredient
+    form(id='newIngredient')
+      |Name:
+      input(name='ingName',id="ingName")
+      br
+      |Price
+      input(name='ingPrice',id="ingPrice")
+      br
+
+
+      button(type='submit')
+        |Submit
+  
+
+

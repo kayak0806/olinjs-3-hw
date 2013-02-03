@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 Ingredients
+  div
+    each ingredient, i in Ingredients
+      div(value=ingredient) 
+        |#{ingredient.name} costs #{ingredient.price} dollars

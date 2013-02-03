@@ -1,0 +1,23 @@
+extends layout
+
+
+block content
+  h1= title
+
+  form(id='newOrder')
+    |Name:
+    input(name='orderName',id="orderName")
+    br
+    
+    div.ingList
+      each ing, i in Ingredients
+        input(type='checkbox', id= '#{ing._id}')
+        | #{ing.name} ($#{ing.price}) 
+        br
+
+
+    button(type='submit')
+      |Submit
+
+
+

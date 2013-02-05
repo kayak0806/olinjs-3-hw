@@ -4,9 +4,6 @@ $(function() {
 	$('#newIngredient').on('submit', function(){
 		$.post("/ingredient/create", $('#newIngredient').serialize()); //, $('#newIngredient').serialize()
 
-		$(console.log( $('#ingName').val() ));
-		$(console.log( $('#ingPrice').val() ));
-
 		$('#ingName').val('');
 		$('#ingPrice').val('');
 		return false;
@@ -25,9 +22,9 @@ $(function() {
 
 	});
 
-	$('form.ingredients').on('submit', function(){
-		console.log($(this).attr('name'));
-		$.post('/orders/delete',$(this).serialize());
+	$('form.ingredients').on('submit', function(evt){
+		$.post('/orders/delete/'+$(this).attr('name'));
+		$(this).parent().remove();
 
 		return false;
 

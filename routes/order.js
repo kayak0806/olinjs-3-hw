@@ -30,7 +30,8 @@ exports.create = function(req, res){
 }
 
 exports.delete = function(req, res){
-	console.log(res.body);
+	console.log(req.params.name);
+	Order.where('name').equals(req.params.name).remove();
 	res.redirect('/orders');
 }
 

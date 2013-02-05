@@ -4,7 +4,7 @@ block content
   h1 Orders
   div
     each order, i in Orders
-      div(value=order) 
+      div(value=order, name=order.name) 
         |#{order.name} has ordered a  
         each ingredient in order.ingredients
             |#{ingredient.name} 

@@ -1,5 +1,6 @@
 $(function() {
 	$('body').css('background', 'grey')
+
 	$('#newIngredient').on('submit', function(){
 		$.post("/ingredient/create", $('#newIngredient').serialize()); //, $('#newIngredient').serialize()
 
@@ -12,13 +13,9 @@ $(function() {
 	});
 
 	$('#newOrder').on('submit', function(){
-		$.post("/orders/create", $('#newOrder').serialize()+'&orderIng='+$(checkedIng).serializeArray());
+		$.post("/orders/create", $('#newOrder').serialize());
 
-		var checkedIng =[];
 		$('div.ingList > input').each(function(){
-			if ($(this).is(':checked')){
-				checkedIng.push($(this).attr('id'));
-			};
 			$(this).attr('checked',false);
 		});
 
@@ -28,4 +25,12 @@ $(function() {
 
 	});
 
-})
+	$('form.ingredients').on('submit', function(){
+		console.log($(this).attr('name'));
+		$.post('/orders/delete',$(this).serialize());
+
+		return false;
+
+	});
+
+});

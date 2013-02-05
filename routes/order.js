@@ -4,7 +4,7 @@ var Ingredient = require('../models/models').Ingredient;
 
 
 exports.list = function(req,res){
-	var order = Order.find({}).exec(function (err,docs){
+	var order = Order.find({}).populate('ingredients').exec(function (err,docs){
 		if(err)
 			return console.log("err",order);
 		res.render('order',{Orders:docs,title:'all orders'});
@@ -19,13 +19,19 @@ exports.new = function(req, res){
 }
 
 exports.create = function(req, res){
-	console.log(req.body);
-	var newOrder = new Order({name:req.body.orderName,ingredients:req.body.orderIng})
+
+	console.log(req.body.ingredients);
+	var newOrder = new Order({name:req.body.orderName,ingredients:req.body.ingredients})
 	newOrder.save(function(err) {
 		if (err)
 			return console.log("derp",err);
 		res.redirect('/orders');
 	})
+}
+
+exports.delete = function(req, res){
+	console.log(res.body);
+	res.redirect('/orders');
 }
 
 	

@@ -11,7 +11,7 @@ block content
     
     div.ingList
       each ing, i in Ingredients
-        input(type='checkbox', id= '#{ing._id}')
+        input(type='checkbox', name='ingredients', value= '#{ing._id}')
         | #{ing.name} ($#{ing.price}) 
         br
 
